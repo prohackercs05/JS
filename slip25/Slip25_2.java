@@ -38,7 +38,7 @@ public class Slip25_2 extends JFrame implements ActionListener {
         // Connect to database on startup
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "chetan13", "Ch13et03an05@#");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "postgres", "root");
             st = con.createStatement();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "DB Connection Error: " + e.getMessage());
