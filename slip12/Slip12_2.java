@@ -33,7 +33,7 @@ public class Slip12_2 extends JFrame {
     private void setupDatabaseAndLoadData() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "postgres", "root");
             Statement st = con.createStatement();
 
             // i. Create PROJECT table
