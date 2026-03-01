@@ -8,9 +8,9 @@ public class Slip29_1 {
         String tableName = sc.nextLine();
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "chetan13",
-                    "Ch13et03an05@#");
+            Class.forName("org.postgresql.Driver");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/testdb", "postgres",
+                    "root");
 
             Statement st = con.createStatement();
             // Fetch only one row safely to get metadata

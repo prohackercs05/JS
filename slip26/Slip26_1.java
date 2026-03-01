@@ -22,8 +22,8 @@ public class Slip26_1 {
 
         try {
             // Step 2: Establish connection
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "chetan13", "Ch13et03an05@#");
+            Class.forName("org.postgresql.Driver");
+            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/testdb", "postgres", "root");
 
             // Step 3: Define DELETE query with PreparedStatement
             String sql = "DELETE FROM employee WHERE eno = ?";

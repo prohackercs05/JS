@@ -32,8 +32,8 @@ public class Slip12_2 extends JFrame {
 
     private void setupDatabaseAndLoadData() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "root", "");
+            Class.forName("org.postgresql.Driver");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/testdb", "postgres", "root");
             Statement st = con.createStatement();
 
             // i. Create PROJECT table
@@ -47,11 +47,11 @@ public class Slip12_2 extends JFrame {
             // ii. Insert values
             // Using ON DUPLICATE update to avoid errors on multiple runs
             st.executeUpdate(
-                    "INSERT INTO PROJECT VALUES (1, 'E-Commerce', 'Shopping Website', 'In Progress') ON DUPLICATE KEY UPDATE Project_name=Project_name");
+                    "INSERT INTO PROJECT VALUES (1, 'E-Commerce', 'Shopping Website', 'In Progress') ON CONFLICT (project_id) DO NOTHING");
             st.executeUpdate(
-                    "INSERT INTO PROJECT VALUES (2, 'CRM System', 'Client Relationship Manager', 'Completed') ON DUPLICATE KEY UPDATE Project_name=Project_name");
+                    "INSERT INTO PROJECT VALUES (2, 'CRM System', 'Client Relationship Manager', 'Completed') ON CONFLICT (project_id) DO NOTHING");
             st.executeUpdate(
-                    "INSERT INTO PROJECT VALUES (3, 'Hospital CRM', 'Managing Patient Records', 'Pending') ON DUPLICATE KEY UPDATE Project_name=Project_name");
+                    "INSERT INTO PROJECT VALUES (3, 'Hospital CRM', 'Managing Patient Records', 'Pending') ON CONFLICT (project_id) DO NOTHING");
 
             // iii. Clear current model and load data into JTable
             model.setRowCount(0);
@@ -86,7 +86,7 @@ public class Slip12_2 extends JFrame {
  * PROJECT table structure.
  * 3. Data Insertion: It executes SQL DML 'INSERT INTO' queries to add sample
  * records.
- * 'ON DUPLICATE KEY UPDATE' ensures no primary key violation occurs if the code
+ * 'ON CONFLICT DO NOTHING' ensures no primary key violation occurs if the code
  * is repeated.
  * 4. Data Retrieval: It executes a 'SELECT *' query to fetch all records from
  * PROJECT

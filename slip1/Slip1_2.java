@@ -50,8 +50,8 @@ public class Slip1_2 extends JFrame implements ActionListener {
                 String desig = t3.getText();
                 double sal = Double.parseDouble(t4.getText());
 
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "chetan13", "Ch13et03an05@#");
+                Class.forName("org.postgresql.Driver");
+                con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/testdb", "postgres", "root");
 
                 pst = con.prepareStatement("insert into employee values(?,?,?,?)");
                 pst.setInt(1, eno);
@@ -89,11 +89,11 @@ public class Slip1_2 extends JFrame implements ActionListener {
  * When the 'Save to Database' button is clicked, the actionPerformed method is
  * triggered.
  * It retrieves data from the text fields and establishes a connection to a
- * MySQL database using JDBC.
+ * MySQL database using JDBC. (Updated to PostgreSQL)
  * A PreparedStatement is used to securely insert the data into the 'employee'
  * table.
  * The program handles errors using a try-catch block and displays a success or
  * error message using JOptionPane.
- * Note: You need to have the MySQL Connector JAR in your classpath and a
+ * Note: You need to have the PostgreSQL JDBC Driver in your classpath and a
  * 'testdb' database with an 'employee' table.
  */

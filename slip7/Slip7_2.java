@@ -5,8 +5,8 @@ public class Slip7_2 {
         Connection con = null;
         Statement st = null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "root", "");
+            Class.forName("org.postgresql.Driver");
+            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/testdb", "postgres", "root");
             st = con.createStatement();
 
             // i. Create Product table
@@ -19,11 +19,11 @@ public class Slip7_2 {
 
             // ii. Insert 5 records
             // Using executeUpdate multiple times or batch. For simplicity:
-            st.executeUpdate("INSERT INTO Product VALUES (1, 'Laptop', 50000) ON DUPLICATE KEY UPDATE Pname=Pname");
-            st.executeUpdate("INSERT INTO Product VALUES (2, 'Mobile', 15000) ON DUPLICATE KEY UPDATE Pname=Pname");
-            st.executeUpdate("INSERT INTO Product VALUES (3, 'Tablet', 12000) ON DUPLICATE KEY UPDATE Pname=Pname");
-            st.executeUpdate("INSERT INTO Product VALUES (4, 'Watch', 3000) ON DUPLICATE KEY UPDATE Pname=Pname");
-            st.executeUpdate("INSERT INTO Product VALUES (5, 'Camera', 40000) ON DUPLICATE KEY UPDATE Pname=Pname");
+            st.executeUpdate("INSERT INTO Product VALUES (1, 'Laptop', 50000) ON CONFLICT (Pid) DO NOTHING");
+            st.executeUpdate("INSERT INTO Product VALUES (2, 'Mobile', 15000) ON CONFLICT (Pid) DO NOTHING");
+            st.executeUpdate("INSERT INTO Product VALUES (3, 'Tablet', 12000) ON CONFLICT (Pid) DO NOTHING");
+            st.executeUpdate("INSERT INTO Product VALUES (4, 'Watch', 3000) ON CONFLICT (Pid) DO NOTHING");
+            st.executeUpdate("INSERT INTO Product VALUES (5, 'Camera', 40000) ON CONFLICT (Pid) DO NOTHING");
             System.out.println("5 Records inserted successfully.");
 
             // iii. Display all records
@@ -50,14 +50,15 @@ public class Slip7_2 {
 
 /*
  * Explanation:
- * This program uses JDBC (Java Database Connectivity) to interact with a MySQL
+ * This program uses JDBC (Java Database Connectivity) to interact with a
+ * PostgreSQL
  * database.
- * 1. Connection: Establish a connection to 'testdb' using the MySQL Driver.
+ * 1. Connection: Establish a connection to 'testdb' using the PostgreSQL
+ * Driver.
  * 2. Create Table: Executes a DDL query (CREATE TABLE) to define the Product
  * schema.
- * The IF NOT EXISTS clause prevents errors if the table is already there.
  * 3. Insert Records: Executes DML queries (INSERT) to add 5 sample products.
- * ON DUPLICATE KEY UPDATE is used here to avoid errors if the code is run
+ * ON CONFLICT DO NOTHING is used here to avoid errors if the code is run
  * multiple times.
  * 4. Display Records: Uses a SELECT query to retrieve all data and iterates
  * through the

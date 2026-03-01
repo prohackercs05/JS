@@ -1,13 +1,17 @@
 # PostgreSQL Setup for Slip 30
 
-To run this on your Ubuntu terminal:
+1. **Login & Create Database:**
 
-1. Open terminal and login: `sudo -u postgres psql`
-2. Run these commands:
+```bash
+sudo -i -u postgres
+createdb testdb
+psql testdb
+```
+
+2. **Set Password & Create Table:**
 
 ```sql
-CREATE DATABASE testdb;
-\c testdb
+ALTER USER postgres WITH PASSWORD 'root';
 
 CREATE TABLE Teacher (
     TNo INT PRIMARY KEY,

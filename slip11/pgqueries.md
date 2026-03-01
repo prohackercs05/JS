@@ -1,13 +1,19 @@
 # PostgreSQL Setup for Slip 11
 
-To run this on your Ubuntu terminal:
+Follow these steps on your Ubuntu terminal:
 
-1. Open terminal and login: `sudo -u postgres psql`
-2. Run these commands:
+1. **Login & Create Database:**
+
+```bash
+sudo -i -u postgres
+createdb testdb
+psql testdb
+```
+
+2. **Set Password & Create Table:**
 
 ```sql
-CREATE DATABASE testdb;
-\c testdb
+ALTER USER postgres WITH PASSWORD 'root';
 
 CREATE TABLE DONAR (
     id INT PRIMARY KEY,
@@ -15,4 +21,12 @@ CREATE TABLE DONAR (
     blood_group VARCHAR(10),
     last_donation_date DATE
 );
+```
+
+3. **Insert Sample Data:**
+
+```sql
+INSERT INTO DONAR VALUES (1, 'Alice', 'B+', '2023-12-05');
+INSERT INTO DONAR VALUES (2, 'Joe', 'O+', '2023-11-20');
+INSERT INTO DONAR VALUES (3, 'Bob', 'B+', '2024-01-10');
 ```

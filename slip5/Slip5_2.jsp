@@ -14,11 +14,11 @@
         // Fetch random questions from database and store in a list
         List<Map<String, String>> questions = new ArrayList<>();
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "root", "");
+            Class.forName("org.postgresql.Driver");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/testdb", "postgres", "root");
             Statement st = con.createStatement();
             // Select random 5 questions
-            ResultSet rs = st.executeQuery("SELECT * FROM quiz_questions ORDER BY RAND() LIMIT 5");
+            ResultSet rs = st.executeQuery("SELECT * FROM quiz_questions ORDER BY RANDOM() LIMIT 5");
             
             while (rs.next()) {
                 Map<String, String> q = new HashMap<>();
@@ -89,14 +89,14 @@
 </html>
 
 <!--
-Explanation:
+explanation:
 This JSP implements a simple online quiz system using the 'session' object to manage state.
 1. Initialization: When the page is first loaded, it fetches a randomized list of questions 
-   from a MySQL database ('quiz_questions' table) and stores them in the session.
+   from a PostgreSQL database ('quiz_questions' table) and stores them in the session.
 2. State Management: The session keeps track of the 'qno' (current question index) 
    and the 'score' (number of correct answers).
 3. Logic: On clicking "Next" or "Submit", the program checks if the selected radio button value 
    matches the 'ans' stored in the map. If it matches, the score is incremented.
 4. Flow Control: It uses 'qno' to determine whether to show the next question or the final score.
-5. Randomization: The SQL query 'ORDER BY RAND()' ensures questions are different each time.
+5. Randomization: The SQL query 'ORDER BY RANDOM()' ensures questions are different each time.
 -->

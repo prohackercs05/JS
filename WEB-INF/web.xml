@@ -1,14 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-         version="4.0">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+  version="4.0">
 
+    <!-- Slip 2: Server Info -->
     <servlet>
-        <servlet-name>SlipServlet</servlet-name>
+        <servlet-name>Slip2_2_Servlet</servlet-name>
         <servlet-class>Slip2_2</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>SlipServlet</servlet-name>
-        <url-pattern>/slip</url-pattern>
+        <servlet-name>Slip2_2_Servlet</servlet-name>
+        <url-pattern>/Slip2_2</url-pattern>
+    </servlet-mapping>
+
+    <!-- Slip 11: Donor Info -->
+    <servlet>
+        <servlet-name>Slip11_1_Servlet</servlet-name>
+        <servlet-class>Slip11_1_Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Slip11_1_Servlet</servlet-name>
+        <url-pattern>/Slip11_1_Servlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- Slip 15: Visit Counter -->
+    <servlet>
+        <servlet-name>Slip15_2_Servlet</servlet-name>
+        <servlet-class>Slip15_2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Slip15_2_Servlet</servlet-name>
+        <url-pattern>/Slip15_2</url-pattern>
+    </servlet-mapping>
+
+    <!-- Slip 18: Student Result -->
+    <servlet>
+        <servlet-name>Slip18_2_Servlet</servlet-name>
+        <servlet-class>Slip18_2_Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Slip18_2_Servlet</servlet-name>
+        <url-pattern>/Slip18_2_Servlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- Slip 19: Login -->
+    <servlet>
+        <servlet-name>Slip19_2_Servlet</servlet-name>
+        <servlet-class>Slip19_2_Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Slip19_2_Servlet</servlet-name>
+        <url-pattern>/Slip19_2_Servlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- Slip 27: Table Meta -->
+    <servlet>
+        <servlet-name>Slip27_1_Servlet</servlet-name>
+        <servlet-class>Slip27_1_Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Slip27_1_Servlet</servlet-name>
+        <url-pattern>/Slip27_1_Servlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

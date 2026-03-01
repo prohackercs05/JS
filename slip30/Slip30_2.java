@@ -8,8 +8,8 @@ public class Slip30_2 {
         Statement st = null;
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "chetan13", "Ch13et03an05@#");
+            Class.forName("org.postgresql.Driver");
+            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/testdb", "postgres", "root");
             st = con.createStatement();
 
             // Step 1: Create Teacher table

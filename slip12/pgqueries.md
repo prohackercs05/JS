@@ -1,22 +1,22 @@
 # PostgreSQL Setup for Slip 12
 
-To run this on your Ubuntu terminal:
+1. **Login & Create Database:**
 
-1. Open terminal and login: `sudo -u postgres psql`
-2. Run these commands:
+```bash
+sudo -i -u postgres
+createdb testdb
+psql testdb
+```
+
+2. **Set Password & Create Table:**
 
 ```sql
-CREATE DATABASE testdb;
-\c testdb
+ALTER USER postgres WITH PASSWORD 'root';
 
-CREATE TABLE Project (
+CREATE TABLE PROJECT (
     project_id INT PRIMARY KEY,
-    project_name VARCHAR(100),
-    project_description TEXT,
-    project_status VARCHAR(20)
+    Project_name VARCHAR(100),
+    Project_description TEXT,
+    Project_Status VARCHAR(20)
 );
-
--- Sample Data
-INSERT INTO Project VALUES (101, 'E-Commerce', 'Online shopping portal', 'In Progress');
-INSERT INTO Project VALUES (102, 'LMS', 'Learning Management System', 'Completed');
 ```

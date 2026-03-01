@@ -7,8 +7,8 @@ public class Slip22_1 {
         Connection con = null;
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/testdb", "root", "");
+            Class.forName("org.postgresql.Driver");
+            con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/testdb", "postgres", "root");
 
             while (true) {
                 System.out.println("\n--- Employee Management Menu ---");

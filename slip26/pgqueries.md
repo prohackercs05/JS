@@ -1,20 +1,21 @@
 # PostgreSQL Setup for Slip 26
 
-To run this on your Ubuntu terminal:
+1. **Login & Create Database:**
 
-1. Open terminal and login: `sudo -u postgres psql`
-2. Run these commands:
+```bash
+sudo -i -u postgres
+createdb testdb
+psql testdb
+```
+
+2. **Set Password & Create Table:**
 
 ```sql
-CREATE DATABASE testdb;
-\c testdb
+ALTER USER postgres WITH PASSWORD 'root';
 
 CREATE TABLE employee (
     eno INT PRIMARY KEY,
     ename VARCHAR(50),
-    salary DECIMAL
+    salary DOUBLE PRECISION
 );
-
--- Insert a sample to test deletion
-INSERT INTO employee VALUES (101, 'Test User', 50000);
 ```
